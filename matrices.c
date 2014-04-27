@@ -13,37 +13,42 @@ int trazaDiagSec(const int[][MAX_COL]);
 int trazaDiagPpal(const int[][MAX_COL]);
 void cargarMatriz(int [][MAX_COL]);
 void mostrarMatriz(const int[][MAX_COL]);
+void traspuesta(int[][MAX_COL]);
+void intercambio(int *, int *);
     
 void main(void){
     int matriz[MAX_FI][MAX_COL];
     int op = -1;
-    printf("\nMatrices: Ejercicios 29/30");
+    printf("\nTP 1 Matrices: Ejercicios con matrices cuadradas");
     while(op!=0) {
         op = cargarMenu();
         switch(op){
             case 0:
                 return;
             case 1:cargarMatriz(matriz);
-                break;
+            break;
             case 2:printf("\nResultado: %d",sumatoriaDiagSup(matriz));
-                break;
+            break;
             case 3:printf("\nResultado: %d",sumatoriaSecSup(matriz));
-                break;
+            break;
             case 4: printf("\nResultado: %d",sumatoriaDiagInf(matriz));
-                break;
+            break;
             case 5: printf("\nResultado: %d",sumatoriaSecInf(matriz));
-                break;
+            break;
             case 6: printf("\nResultado: %d",trazaDiagPpal(matriz));
-                break;
+            break;
             case 7: printf("\nResultado: %d",trazaDiagSec(matriz));
-                break;
+            break;
             case 8:
                 printf("\nResultado: %d",sumatoriaDiagSup(matriz)+trazaDiagPpal(matriz));
-                break;
+            break;
             case 9: 
                 printf("\nResultado: %d",sumatoriaDiagInf(matriz)+trazaDiagPpal(matriz));
-                break;
-            //Agregar trazas
+            break;
+            case 10:
+                traspuesta(matriz);
+                mostrarMatriz(matriz);
+            break;
         }    
     }
 }
@@ -51,7 +56,7 @@ void main(void){
 int cargarMenu(void){
     int opcion = -1;
     do{
-        printf("\nSeleccione la operacion a realizar \n1)Ingresar matriz \n2)Sumatoria de los elem. superiores a la diag. ppal. (s/diag. ppal.) \n3)Sumatoria de los elem. superiores a la diag. sec. (s/diag. sec.) \n4)Sumatoria de los elem. inferiores a la diag. ppal. (s/diag. ppal.) \n5)Sumatoria de los elem. inferiores a la diag. sec. (s/diag. sec.) \n6)Traza de la diag. ppal. de la matriz \n7)Traza de la diag. sec. de la matriz \n8)Sumatoria de los elem. superiores a la diag. ppal. (incluyendo diag. ppal.) \n9)Sumatoria de los elem. inferiores a la diag. ppal. (incluyendo diag. ppal.) \n0)Salir \n");
+        printf("\nSeleccione la operacion a realizar \n1)Ingresar matriz \n2)Sumatoria de los elem. superiores a la diag. ppal. (s/diag. ppal.) \n3)Sumatoria de los elem. superiores a la diag. sec. (s/diag. sec.) \n4)Sumatoria de los elem. inferiores a la diag. ppal. (s/diag. ppal.) \n5)Sumatoria de los elem. inferiores a la diag. sec. (s/diag. sec.) \n6)Traza de la diag. ppal. de la matriz \n7)Traza de la diag. sec. de la matriz \n8)Sumatoria de los elem. superiores a la diag. ppal. (incluyendo diag. ppal.) \n9)Sumatoria de los elem. inferiores a la diag. ppal. (incluyendo diag. ppal.) \n10)Trasponer matriz \n0)Salir \n");
         scanf("%d",&opcion);
     } while(opcion == -1 && opcion!=1 && opcion !=2 && opcion!= 3 && opcion!=4 && opcion!=5 && opcion!=6 && opcion!=7 && opcion!=0);
     return opcion;
@@ -151,4 +156,22 @@ int trazaDiagPpal(const int M[][MAX_COL]){
         c++;
     }
     return acum;
+}
+
+void traspuesta(int M[][MAX_COL]){
+    int f=1, c=0;
+    while(c<MAX_COL-1){
+        intercambio(&M[f][c], &M[c][f]);
+        c++;
+        if(f==c && f<MAX_FI-1){
+            f++;
+            c=0;
+        }
+    }
+}
+
+void intercambio(int *a, int *b){
+    int aux=*a;
+    *a = *b;
+    *b = aux;
 }
