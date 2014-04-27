@@ -58,7 +58,7 @@ int cargarMenu(void){
     do{
         printf("\nSeleccione la operacion a realizar \n1)Ingresar matriz \n2)Sumatoria de los elem. superiores a la diag. ppal. (s/diag. ppal.) \n3)Sumatoria de los elem. superiores a la diag. sec. (s/diag. sec.) \n4)Sumatoria de los elem. inferiores a la diag. ppal. (s/diag. ppal.) \n5)Sumatoria de los elem. inferiores a la diag. sec. (s/diag. sec.) \n6)Traza de la diag. ppal. de la matriz \n7)Traza de la diag. sec. de la matriz \n8)Sumatoria de los elem. superiores a la diag. ppal. (incluyendo diag. ppal.) \n9)Sumatoria de los elem. inferiores a la diag. ppal. (incluyendo diag. ppal.) \n10)Trasponer matriz \n0)Salir \n");
         scanf("%d",&opcion);
-    } while(opcion == -1 && opcion!=1 && opcion !=2 && opcion!= 3 && opcion!=4 && opcion!=5 && opcion!=6 && opcion!=7 && opcion!=0);
+    } while(opcion<1 && opcion >10);
     return opcion;
 }
 //Sumatoria de los elem. inferiores a la diag. ppal. (s/ incluir diag. ppal.)
